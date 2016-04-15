@@ -12,8 +12,8 @@
       // Global Settings
       // -----------------------------------
       $rootScope.app = {
-        name: 'Angle',
-        description: 'Angular Bootstrap Admin Template',
+        name: 'Admin-back',
+        description: '这是一个简单的angluarjs的后台项目',
         year: ((new Date()).getFullYear()),
         layout: {
           isFixed: true,

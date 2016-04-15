@@ -730,8 +730,8 @@
       // Global Settings
       // -----------------------------------
       $rootScope.app = {
-        name: 'Angle',
-        description: 'Angular Bootstrap Admin Template',
+        name: 'Admin-back',
+        description: '这是一个简单的angluarjs的后台项目',
         year: ((new Date()).getFullYear()),
         layout: {
           isFixed: true,
@@ -1144,52 +1144,53 @@
           suffix : '.json'
       });
 
-      $translateProvider.preferredLanguage('en');
+      $translateProvider.preferredLanguage('cn');
       $translateProvider.useLocalStorage();
       $translateProvider.usePostCompiling(true);
       $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
 
     }
 })();
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('app.translate')
         .run(translateRun)
-        ;
+    ;
     translateRun.$inject = ['$rootScope', '$translate'];
-    
-    function translateRun($rootScope, $translate){
 
-      // Internationalization
-      // ----------------------
+    function translateRun($rootScope, $translate) {
 
-      $rootScope.language = {
-        // Handles language dropdown
-        listIsOpen: false,
-        // list of available languages
-        available: {
-          'en':       'English',
-          'es_AR':    'Español'
-        },
-        // display always the current ui language
-        init: function () {
-          var proposedLanguage = $translate.proposedLanguage() || $translate.use();
-          var preferredLanguage = $translate.preferredLanguage(); // we know we have set a preferred one in app.config
-          $rootScope.language.selected = $rootScope.language.available[ (proposedLanguage || preferredLanguage) ];
-        },
-        set: function (localeId) {
-          // Set the new idiom
-          $translate.use(localeId);
-          // save a reference for the current language
-          $rootScope.language.selected = $rootScope.language.available[localeId];
-          // finally toggle dropdown
-          $rootScope.language.listIsOpen = ! $rootScope.language.listIsOpen;
-        }
-      };
+        // Internationalization
+        // ----------------------
 
-      $rootScope.language.init();
+        $rootScope.language = {
+            // Handles language dropdown
+            listIsOpen: false,
+            // list of available languages
+            available: {
+                'en': 'English',
+                'es_AR': 'Español',
+                'cn': '中文'
+            },
+            // display always the current ui language
+            init: function () {
+                var proposedLanguage = $translate.proposedLanguage() || $translate.use();
+                var preferredLanguage = $translate.preferredLanguage(); // we know we have set a preferred one in app.config
+                $rootScope.language.selected = $rootScope.language.available[(proposedLanguage || preferredLanguage)];
+            },
+            set: function (localeId) {
+                // Set the new idiom
+                $translate.use(localeId);
+                // save a reference for the current language
+                $rootScope.language.selected = $rootScope.language.available[localeId];
+                // finally toggle dropdown
+                $rootScope.language.listIsOpen = !$rootScope.language.listIsOpen;
+            }
+        };
+
+        $rootScope.language.init();
 
     }
 })();
